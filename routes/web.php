@@ -11,6 +11,28 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Route::get('/', 'BlogController@index')->name('blog.home');
+Route::get('/{slug}', 'BlogController@showPost')->name('blog.detail');
+
+//后台路由
+Route::get('/admin/', function (){
+    return redirect('admin/post');
 });
+
+Route::middleware('auth')->namespace('Admin')->group(function (){
+    Route::resource('admin/post', 'PostController');
+    Route::resource('admin/tag', 'TagController');
+    Route::get('admin/upload', 'UploadController@index');
+});
+
+//登录退出
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('/login', 'Auth\LoginController@login');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
+
+
