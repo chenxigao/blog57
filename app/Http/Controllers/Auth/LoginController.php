@@ -43,7 +43,8 @@ class LoginController extends Controller
         return view('admin.auth.login');
     }
 
-    public function loggedOut(Request $request)
+    // 退出后重定向到登录页
+    public function logout()
     {
         return redirect('/login');
     }

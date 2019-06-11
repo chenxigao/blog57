@@ -16,7 +16,6 @@
 //});
 
 Route::get('/', 'BlogController@index')->name('blog.home');
-Route::get('/{slug}', 'BlogController@showPost')->name('blog.detail');
 
 //后台路由
 Route::get('/admin/', function (){
@@ -25,7 +24,7 @@ Route::get('/admin/', function (){
 
 Route::middleware('auth')->namespace('Admin')->group(function (){
     Route::resource('admin/post', 'PostController');
-    Route::resource('admin/tag', 'TagController');
+    Route::resource('admin/tag', 'TagController', ['except' => 'show']);
     Route::get('admin/upload', 'UploadController@index');
 });
 
@@ -33,6 +32,8 @@ Route::middleware('auth')->namespace('Admin')->group(function (){
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/login', 'Auth\LoginController@login');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::get('/{slug}', 'BlogController@showPost')->name('blog.detail');
 
 
 
