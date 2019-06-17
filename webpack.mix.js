@@ -14,7 +14,7 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');
 
-//selectize暂不支持 Bootstrap4
+// Selectize 暂不支持 Bootstrap 4
 mix.combine([
     'node_modules/selectize/dist/css/selectize.css',
     'node_modules/selectize/dist/css/selectize.bootstrap3.css'

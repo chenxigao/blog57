@@ -26,5 +26,10 @@
     "startbootstrap-clean-blog": "^5.0.7",
     "vue": "^2.5.17",
     "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "ajv": "^6.6.1",
+    "imagemin": "^6.0.0",
+    "npm": "^6.4.1"
   }
 }

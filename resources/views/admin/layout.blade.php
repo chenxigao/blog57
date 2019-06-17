@@ -30,9 +30,10 @@
 @yield('content')
 </main>
 <script src="{{ asset('js/app.js') }}"></script>
-<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
 @yield('scripts')
+<script>
+    console.log(window.$);
+</script>
 
 </body>
 </html>
