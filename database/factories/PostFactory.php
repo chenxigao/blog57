@@ -6,6 +6,6 @@ $factory->define(App\Models\Post::class, function (Faker $faker) {
     return [
             'title'      => $faker->sentence(mt_rand(3, 10)),
             'content'    => join("\n\n", $faker->paragraphs(mt_rand(3, 6))),
-            'publish_at' => $faker->dateTimeBetween('-1 month', '+3 days'),
+            '' => $faker->dateTimeBetween('-1 month', '+3 days'),
     ];
 });

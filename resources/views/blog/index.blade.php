@@ -14,7 +14,7 @@
         @foreach($posts as $post)
         <li>
             <a href="{{ route('blog.detail', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
-            <em>{{ $post->publish_at }}</em>
+            <em>{{ $post->published_at }}</em>
             <p>
                 {{ str_limit($post->content) }}
             </p>

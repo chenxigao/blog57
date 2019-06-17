@@ -14,3 +14,21 @@ function is_image($mimeType)
 {
     return starts_with($mimeType, 'image/');
 }
+
+//如果为true则返回checked,checked() 方法用于在视图的复选框和单选框中设置 checked 属性。
+function checked($value)
+{
+    return $value ? 'checked' : '';
+}
+
+//返回image头部url,page_image() 方法用于返回上传图片的完整路径。
+function page_image($value = null)
+{
+    if (empty($value)){
+        $value = config('blog.page_image');
+    }
+    if (! starts_with($value, 'http') && $value[0] !== '/'){
+        $value = config('blog.uploads.webpath') . '/' . $value;
+    }
+    return $value;
+}

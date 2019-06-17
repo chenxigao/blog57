@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('title');//文章标题
             $table->text('content');//文章内容
             $table->softDeletes();//用于支持软删除
-            $table->timestamp('publish_at')->nullable();//文章正式发布时间
+            $table->timestamp('published_at')->nullable();//文章正式发布时间
             $table->timestamps();
         });
     }

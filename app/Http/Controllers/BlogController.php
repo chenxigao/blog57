@@ -10,9 +10,9 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $posts = Post::where('publish_at', '<=', Carbon::now())
-                ->orderBy('publish_at', 'desc')
-                ->paginate(config('blopg.posts_per_page'));
+        $posts = Post::where('published_at', '<=', Carbon::now())
+                ->orderBy('', 'desc')
+                ->paginate(config('blog.posts_per_page'));
 
         return view('blog.index', compact('posts'));
         

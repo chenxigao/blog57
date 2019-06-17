@@ -6,7 +6,7 @@
 <body>
 <div class="container">
     <h1>{{ $post->title }}</h1>
-    <h5>{{ $post->publish_at }}</h5>
+    <h5>{{ $post->published_at }}</h5>
     <hr>
     {!! nl2br(e($post->content)) !!}
     <hr>
