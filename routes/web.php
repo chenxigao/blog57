@@ -18,7 +18,7 @@
 Route::get('/', 'BlogController@index')->name('blog.home');
 
 //后台路由
-Route::get('/admin', 'blogController@show')->name('show');
+Route::get('/admin', 'BlogController@show')->name('show');
 
 Route::middleware('auth')->namespace('Admin')->group(function (){
 
