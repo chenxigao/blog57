@@ -18,11 +18,10 @@
 Route::get('/', 'BlogController@index')->name('blog.home');
 
 //后台路由
-Route::get('/admin/', function (){
-    return redirect('admin/post');
-});
+Route::get('/admin', 'blogController@show')->name('show');
 
 Route::middleware('auth')->namespace('Admin')->group(function (){
+
     Route::resource('admin/post', 'PostController', ['except' => 'show']);
     Route::resource('admin/tag', 'TagController', ['except' => 'show']);
     Route::get('admin/upload', 'UploadController@index');

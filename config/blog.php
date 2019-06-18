@@ -11,4 +11,8 @@ return [
                 'storage' => 'public',
                 'webpath' => '/storage',
         ],
+        'form'             => [
+                'address' => env('MAIL_FROM_ADDRESS', 'springlight@126.com'),
+                'name'    => env('MAIL_FROM_NAME', 'Spring花园'),
+        ],
 ];

@@ -10,6 +10,11 @@ use App\Services\PostService;
 
 class BlogController extends Controller
 {
+    public function show()
+    {
+        return redirect('/admin/post');
+    }
+    
     public function index(Request $request)
     {
         $tag = $request->get('tag');
