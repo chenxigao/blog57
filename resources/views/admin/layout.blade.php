@@ -31,9 +31,9 @@
 </main>
 <script src="{{ asset('js/app.js') }}"></script>
 @yield('scripts')
-<script>
-    console.log(window.$);
-</script>
+{{--<script>--}}
+    {{--console.log(window.$);--}}
+{{--</script>--}}
 
 </body>
 </html>

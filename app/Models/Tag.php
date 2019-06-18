@@ -36,4 +36,12 @@ class Tag extends Model {
         }
     }
 
+    //创建一个：返回用于标记的索引布局（Return the index layout to use for a tag）
+    public static function layout($tag,$default = 'blog.index' )
+    {
+        $layout = static::where('tag', $tag)->get()->pluck('layout')->first();
+
+        return $layout ?: $default;
+    }
+
 }

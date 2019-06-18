@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use App\Services\Markdowner;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -53,7 +54,7 @@ class Post extends Model {
     {
         $slug = str_slug($title, '-', $extra);
 
-        if (Static::where('slug', $slug)->exists()){
+        if (static::where('slug', $slug)->exists()){
             $this->setUniqueSlug($title, $extra+1);
             return;
         }
@@ -86,5 +87,56 @@ class Post extends Model {
         $this->tags()->detach();
     }
 
+    //返回文章url的方法
+    public function url(Tag $tag = null)
+    {
+        $url = url('blog/' . $this->slug);
+
+        if ($tag){
+            $url .= '?tag=' . urlencode($tag->tag);
+        }
+        return $url;
+    }
+
+    //返回标记连接的数组
+    public function tagLinks($base = '/blog?tag=%TAG%')
+    {
+        $tags = $this->tags()->get()->pluck('tag')->all();
+        $return = [];
+        foreach ( $tags as $tag){
+            $url = str_replace('%TAG%', urlencode($tag), $base);
+            $return[] = '<a href="' . $url . '">' . e($tag) . '</a>';
+        }
+        return $return;
+    }
+    
+    //在此之后返回下一个日志或为空
+    public function newerPost(Tag $tag = null)
+    {
+        $query = static::where('published_at', $this->published_at)
+                ->where('published_at', '<=', Carbon::now())
+                ->where('is_draft', 0)
+                ->orderBy('published_at', 'asc');
+        if ($tag){
+            $query = $query->whereHas('tags', function($q) use ($tag){
+                $q->where('tag', '=', $tag->tag);
+            });
+        }
+        return $query->first();
+    }
+
+    //返回之前的上一篇文章或为空
+    public function olderPost(Tag $tag = null)
+    {
+        $query = static::where('published_at', '<=', $this->published_at)
+                ->where('is_draft', 0)
+                ->where('published_at', 'desc');
+        if ($tag){
+            $query = $query->whereHas('tags', function($q) use ($tag){
+                $q->where('tag', '=', $tag->tag);
+            });
+        }
+        return $query->first();
+    }
 
 }

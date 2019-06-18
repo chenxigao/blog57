@@ -1,3 +1,4 @@
+
 window._ = require('lodash');
 
 /**
@@ -13,9 +14,7 @@ try {
     require('bootstrap');
     require('datatables.net-bs4');
     require('selectize');
-} catch (e) {
-    console.log(e)
-}
+} catch (e) {}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

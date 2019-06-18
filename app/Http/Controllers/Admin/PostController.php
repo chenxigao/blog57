@@ -70,7 +70,7 @@ class PostController extends Controller
      */
     public function store(PostCreateRequest $request)
     {
-        $post = Post::create($request->postFailData());
+        $post = Post::create($request->postFillData());
         $post->syncTags($request->get('tags', []));
 
         return redirect()->route('post.index')->with('success', '新文章创建成功！');

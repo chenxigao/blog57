@@ -31,10 +31,49 @@
                         </a>
                         <p class="post-meta">
                             Posted on {{ $post->published_at->format('Y-m-d') }}
+                            @if($post->tags->count())
+                                in
+                                {!! join(',', $post->tagLinks()) !!}
+                            @endif
                         </p>
                     </div>
+                    <hr>
                 @endforeach
+
+                {{-- 分页--}}
+                <div class="clearfix">
+                    {{-- Reverse Direction --}}
+                    @if($reverse_direction)
+                        @if($posts->currentPage() > 1)
+                            <a class="btn btn-primary float-left"
+                               href="{!! $posts->url($posts->currentPage() - 1) !!}">
+                                ←
+                                Previous {{ $tag->tag }} Posts
+                            </a>
+                        @endif
+                        @if($posts->hasMorePages())
+                            <a class="btn btn-primary float-right" href="{!! $posts->nextPageUrl() !!}">
+                                Next {{ $tag->tag }} Posts
+                                →
+                            </a>
+                        @endif
+                    @else
+                        @if($posts->currentPage() > 1)
+                            <a class="btn btn-primary float-left" href="{!! $posts->url($posts->currentPage() -1 ) !!}">
+                                ←
+                                Newer {{ $tag ? $tag->tag : '' }} Posts
+                            </a>
+                        @endif
+                        @if($posts->hasMorePages())
+                            <a class="btn btn-primary float-right" href="{!! $posts->nextPageUrl() !!}">
+                                Older {{ $tag ? $tag->tag : '' }} Posts
+                                →
+                            </a>
+                            @endif
+                    @endif
+                </div>
             </div>
         </div>
     </div>
 @stop
+
