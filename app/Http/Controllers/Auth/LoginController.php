@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use http\Env\Request;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -44,7 +44,7 @@ class LoginController extends Controller
     }
 
     // 退出后重定向到登录页
-    public function logout()
+    public function loggedOut(Request $request)
     {
         return redirect('/login');
     }
