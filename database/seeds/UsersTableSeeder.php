@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
         $user = User::find(1);
         $user->name = "Spring";
         $user->email = 'springlight@126.com';
-        $user->password = bcrypt('secret123');
+        $user->password = '$2a$10$q/6bQTlDVy080q1d5zX0E.ks/H4Xi2fEL/8oY8KMS/agvYQeaaF3u';
         $user->save();
 
     }

@@ -29,4 +29,16 @@ class TagCreateRequest extends FormRequest {
                 'layout'   => 'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+                'tag.bail'          => '标签保证',
+                'tag.required'      => '标签不能为空',
+                'tag.unique'        => '标签不能重复',
+                'title.required'    => '标题不能为空',
+                'subtitle.required' => '副标题不能为空',
+                'layout.required'   => '布局不能为空',
+        ];
+    }
 }

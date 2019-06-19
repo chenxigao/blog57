@@ -28,4 +28,14 @@ class TagUpdateRequest extends FormRequest {
                 'layout'   => 'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+                'title.required'  => '标题不能为空',
+                'subtitle'        => '副标题不能为空',
+                'layout.required' => '布局不能为空',
+        ];
+    }
+
 }

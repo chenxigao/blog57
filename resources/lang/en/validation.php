@@ -128,9 +128,13 @@ return [
     */
 
     'custom' => [
-        'title' => [
-            'required' => '标题不能为空',
+        'email' => [
+            'required' => '邮箱不能为空',
         ],
+        'password' => [
+                'required' => '密码不能为空',
+            'min' => '密码最少6个字符',
+        ]
     ],
 
     /*
