@@ -2,7 +2,7 @@
 return [
         'name'             => 'Spring花园',
         'title'            => 'Spring',
-        'subtitle'         => 'blog57.test',
+        'subtitle'         => '万花盛开，春光无限！',
         'meta_description' => 'Spring 致力于提供各种鲜花种植技巧!',
         'author'           => '花仙子',
         'page_image'       => 'home-bg.jpg',
