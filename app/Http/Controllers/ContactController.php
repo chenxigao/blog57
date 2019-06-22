@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Mail\ContactMail;
-use App\Http\Requests\ContactMeRequst;
+use App\Http\Requests\ContactMeRequest;
 use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
@@ -14,12 +14,12 @@ class ContactController extends Controller
         return view('blog.contact');
     }
 
-    public function sendContactInfo(ContactMeRequst $requst)
+    public function sendContactInfo(ContactMeRequest $request)
     {
-        $data = $requst->only('name', 'email', 'phone');
-        $data['messageLines'] = explode("\n", $requst->get('message'));
+        $data = $request->only('name', 'email', 'phone');
+        $data['messageLines'] = explode("\n", $request->get('message'));
 
-        Mail::to($data['email'])->queue(new ContactMail($data));
+        Mail::to(config('blog.email'))->queue(new ContactMail($data));
 
         return back()->with('success', '消息已发送，感谢你的反馈');
     }

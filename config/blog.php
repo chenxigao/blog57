@@ -15,4 +15,5 @@ return [
                 'address' => env('MAIL_FROM_ADDRESS', 'springlight@126.com'),
                 'name'    => env('MAIL_FROM_NAME', 'Spring花园'),
         ],
+        'email'            => 'springlight@126.com',
 ];

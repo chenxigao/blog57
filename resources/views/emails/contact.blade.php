@@ -11,8 +11,8 @@
 </ul>
 <hr>
 <p>
-    @foreach($data['messageLines'] as $messgeLine)
-        {{ $messgeLine }} <br>
+    @foreach($data['messageLines'] as $messageLine)
+        {{ $messageLine }} <br>
         @endforeach
 </p>
 <hr>
