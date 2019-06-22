@@ -23,7 +23,39 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        if ($this->app->environment('local')) {
+            Route::group(['prefix' => config('debugbar.route_prefix')], function () {
+                Route::get('render', function () {
+                    $debugBar = debugbar();
+                    $renderer = $debugBar->getJavascriptRenderer();
+                    $renderer->setOpenHandlerUrl('/' . config('debugbar.route_prefix') . '/open');
+                    $script = $renderer->render();
+                    preg_match('/(?:<script[^>]*>)(.*)<\/script>/isU', $script, $matches);
+
+                    $js = $matches[1];
+
+                    $jsRetryFn = "function retry(times, fn, sleep) {
+                                 if (!times) times = 1;
+                                 if (!sleep) sleep = 50;
+                                 --times;
+                                 try {
+                                     return fn();
+                                 } catch (e) {
+                                     if (!times) throw e;
+                                     if (sleep) {
+                                         setTimeout(function() {
+                                             retry(times, fn, sleep);
+                                         }, sleep);
+                                     }
+                                 }
+                              }\n";
+
+                    // sleep(1);
+                    echo "${jsRetryFn}\nretry(50, function() {\n${js}\nwindow.phpdebugbar = phpdebugbar\n}, 200);";
+                    exit;
+                });
+            });
+        }
 
         parent::boot();
     }

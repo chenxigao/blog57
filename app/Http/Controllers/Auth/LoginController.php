@@ -44,9 +44,13 @@ class LoginController extends Controller
     }
 
     // 退出后重定向到登录页
-    public function loggedOut(Request $request)
+    public function logout(Request $request)
     {
-        return redirect('/login');
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return $this->loggedOut($request) ?: redirect('/login');
     }
 
 }

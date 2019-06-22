@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        if (app()->environment('local') && request()->isJson()){
+            $debugbar = debugbar();
+            $debugbar->sendDataInHeaders(true);
+        }
     }
 }

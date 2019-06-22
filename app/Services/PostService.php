@@ -14,6 +14,7 @@ class PostService {
         $this->tag = $tag;
     }
 
+    //返回正常索引页的数据
     public function lists()
     {
         if ($this->tag) {
@@ -41,15 +42,15 @@ class PostService {
                 'tag'               => null,
         ];
     }
-    
+
     //返回标记索引页的数据
     protected function tagIndexData($tag)
     {
         $tag = Tag::where('tag', $tag)->firstOrFail();
-        $reverse_direction = (bool)$tag->reverse_direction;
+        $reverse_direction = (bool) $tag->reverse_direction;
 
         $posts = Post::where('published_at', '<=', Carbon::now())
-                ->whereHas('tags', function ($q) use ($tag){
+                ->whereHas('tags', function ($q) use ($tag) {
                     $q->where('tag', '=', $tag->tag);
                 })
                 ->where('is_draft', 0)
@@ -61,13 +62,13 @@ class PostService {
         $page_image = $tag->page_image ? : config('blog.page_image');
 
         return [
-                'title' => $tag->title,
-            'subtitle' => $tag->subtitle,
-            'posts' => $posts,
-            'page_image' => $page_image,
-            'tag' => $tag,
-            'reverse_direction' => $reverse_direction,
-            'meta_description' => $tag->meta_description ?: config('blog.description'),
+                'title'             => $tag->title,
+                'subtitle'          => $tag->subtitle,
+                'posts'             => $posts,
+                'page_image'        => $page_image,
+                'tag'               => $tag,
+                'reverse_direction' => $reverse_direction,
+                'meta_description'  => $tag->meta_description ? : config('blog.description'),
         ];
 
     }

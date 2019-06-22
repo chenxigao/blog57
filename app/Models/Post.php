@@ -12,7 +12,7 @@ class Post extends Model {
 
     //添加 $fillable 属性
     protected $fillable = [
-            'title', 'subtitle', 'content_raw', 'page_image', 'meta_description', 'layout', 'is_draft', 'published_at'
+            'title', 'subtitle', 'content_raw', 'page_image', 'meta_description', 'layout', 'is_draft', 'published_at',
     ];
 
     //返回published_at 字段的日期部分
@@ -20,6 +20,7 @@ class Post extends Model {
     {
         return $this->published_at->format('Y-m-d');
     }
+
     //返回published_at 字段的时间部分
     public function getPublishTimeAttribute($value)
     {
@@ -37,8 +38,8 @@ class Post extends Model {
     {
         return $this->belongsToMany(Tag::class, 'post_tag_pivot');
     }
-    
-    
+
+
     //设置标题属性并自动设置slug
     public function setTitleAttribute($value)
     {
@@ -54,8 +55,8 @@ class Post extends Model {
     {
         $slug = str_slug($title, '-', $extra);
 
-        if (static::where('slug', $slug)->exists()){
-            $this->setUniqueSlug($title, $extra+1);
+        if (static::where('slug', $slug)->exists()) {
+            $this->setUniqueSlug($title, $extra + 1);
             return;
         }
 
@@ -69,7 +70,7 @@ class Post extends Model {
 
         $this->attributes['content_raw'] = $value;
         $this->attributes['content_html'] = $markdown->toHTML($value);
-        
+
     }
 
     //同步添加的新标签
@@ -77,7 +78,7 @@ class Post extends Model {
     {
         Tag::addNeededTags($tags);
 
-        if (count($tags)){
+        if (count($tags)) {
             $this->tags()->sync(
                     Tag::whereIn('tag', $tags)->get()->pluck('id')->all()
             );
@@ -92,7 +93,7 @@ class Post extends Model {
     {
         $url = url('blog/' . $this->slug);
 
-        if ($tag){
+        if ($tag) {
             $url .= '?tag=' . urlencode($tag->tag);
         }
         return $url;
@@ -103,22 +104,22 @@ class Post extends Model {
     {
         $tags = $this->tags()->get()->pluck('tag')->all();
         $return = [];
-        foreach ( $tags as $tag){
+        foreach ($tags as $tag) {
             $url = str_replace('%TAG%', urlencode($tag), $base);
             $return[] = '<a href="' . $url . '">' . e($tag) . '</a>';
         }
         return $return;
     }
-    
+
     //在此之后返回下一个日志或为空
     public function newerPost(Tag $tag = null)
     {
-        $query = static::where('published_at', $this->published_at)
+        $query = static::where('published_at', '>', $this->published_at)
                 ->where('published_at', '<=', Carbon::now())
                 ->where('is_draft', 0)
                 ->orderBy('published_at', 'asc');
-        if ($tag){
-            $query = $query->whereHas('tags', function($q) use ($tag){
+        if ($tag) {
+            $query = $query->whereHas('tags', function ($q) use ($tag) {
                 $q->where('tag', '=', $tag->tag);
             });
         }
@@ -128,9 +129,9 @@ class Post extends Model {
     //返回之前的上一篇文章或为空
     public function olderPost(Tag $tag = null)
     {
-        $query = static::where('published_at', '<=', $this->published_at)
+        $query = static::query()->where('published_at', '<', $this->published_at)
                 ->where('is_draft', 0)
-                ->where('published_at', 'desc');
+                ->orderBy('published_at', 'desc');
         if ($tag){
             $query = $query->whereHas('tags', function($q) use ($tag){
                 $q->where('tag', '=', $tag->tag);
