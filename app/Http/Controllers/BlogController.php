@@ -36,5 +36,13 @@ class BlogController extends Controller
         return view($post->layout, compact('post', 'tag'));
         
     }
+
+    public function rss(rssFeed $feed)
+    {
+        dd(123);
+        $rss = $feed->getRSS();
+
+        return response($rss)->header('Content-type', 'application/rss+xml');
+    }
     
 }

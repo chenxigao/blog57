@@ -38,3 +38,6 @@ Route::get('/blog/{slug}', 'BlogController@showPost')->name('blog.detail');
 //联系我们邮箱路由
 Route::get('/contact', 'ContactController@showForm');
 Route::post('/contact', 'ContactController@sendContactInfo');
+
+//添加订阅路由
+Route::get('rss', 'BlogController@rss');

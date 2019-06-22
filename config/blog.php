@@ -1,19 +1,19 @@
 <?php
 return [
-        'name'             => 'Spring花园',
-        'title'            => 'Spring',
-        'subtitle'         => '万花盛开，春光无限！',
-        'meta_description' => 'Spring 致力于提供各种鲜花种植技巧!',
-        'author'           => '花仙子',
-        'page_image'       => 'home-bg.jpg',
-        'posts_per_page'   => 10,
+        'name'             => '晨曦入诗源',
+        'title'            => '晨曦',
+        'subtitle'         => 'http://www.rui85.cn',
+        'meta_description' => '晨曦入诗，暮雨出画！学习使我快乐！',
+        'author'           => '晨曦',
+        'page_image'       => 'sunny-boy.jpg',
+        'posts_per_page'   => 5,
         'uploads'          => [
                 'storage' => 'public',
                 'webpath' => '/storage',
         ],
         'form'             => [
                 'address' => env('MAIL_FROM_ADDRESS', 'springlight@126.com'),
-                'name'    => env('MAIL_FROM_NAME', 'Spring花园'),
+                'name'    => env('MAIL_FROM_NAME', '晨曦入诗源'),
         ],
-        'email'            => 'springlight@126.com',
+        'email'            => env('MAIL_FROM'),
 ];
