@@ -35,4 +35,6 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/blog/{slug}', 'BlogController@showPost')->name('blog.detail');
 
-
+//联系我们邮箱路由
+Route::get('/contact', 'ContactController@showForm');
+Route::post('/contact', 'ContactController@sendContactInfo');
