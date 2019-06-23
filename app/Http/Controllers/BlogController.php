@@ -7,6 +7,8 @@ use App\Models\Post;
 use App\Models\Tag;
 use Carbon\Carbon;
 use App\Services\PostService;
+use App\Services\RssFeed;
+use App\Services\SiteMap;
 
 class BlogController extends Controller
 {
@@ -39,10 +41,17 @@ class BlogController extends Controller
 
     public function rss(rssFeed $feed)
     {
-        dd(123);
         $rss = $feed->getRSS();
 
         return response($rss)->header('Content-type', 'application/rss+xml');
     }
-    
+
+    //生成站内地图方法
+    public function siteMap(SiteMap $siteMap)
+    {
+        $map = $siteMap->getSiteMap();
+
+        return response($map)->header('Content-type', 'text/xml');
+    }
+
 }

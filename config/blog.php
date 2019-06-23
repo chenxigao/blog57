@@ -1,7 +1,7 @@
 <?php
 return [
         'name'             => '晨曦入诗源',
-        'title'            => '晨曦',
+        'title'            => '晨曦入诗',
         'subtitle'         => 'http://www.rui85.cn',
         'meta_description' => '晨曦入诗，暮雨出画！学习使我快乐！',
         'author'           => '晨曦',

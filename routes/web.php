@@ -41,3 +41,6 @@ Route::post('/contact', 'ContactController@sendContactInfo');
 
 //添加订阅路由
 Route::get('rss', 'BlogController@rss');
+
+//生成站点地图路由
+Route::get('sitemap.xml', 'BlogController@siteMap');
