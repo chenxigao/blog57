@@ -5,14 +5,7 @@
     <bookmark url="file://$PROJECT_DIR$/resources/views/emails/test.blade.php" line="0" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11e6a48e-dd4f-4cef-b754-fbc9c47b5cc8" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Services/SiteMap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BlogController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BlogController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/blog.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/blog.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/blog/partials/page-footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/blog/partials/page-footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-    </list>
+    <list default="true" id="11e6a48e-dd4f-4cef-b754-fbc9c47b5cc8" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,10 +72,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="page-footer.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="page-footer.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/blog/partials/page-footer.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
+            <state relative-caret-position="319">
               <caret line="23" column="88" selection-start-line="23" selection-start-column="88" selection-end-line="23" selection-end-column="88" />
             </state>
           </provider>
@@ -112,7 +105,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blog.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="blog.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/blog.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="73">
@@ -414,6 +407,11 @@
             <path>
               <item name="blog57" type="b2602c69:ProjectViewProjectNode" />
               <item name="blog57" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blog57" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog57" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -535,12 +533,12 @@
       <workItem from="1560908347299" duration="30668000" />
       <workItem from="1560996084273" duration="12070000" />
       <workItem from="1561172193331" duration="29826000" />
-      <workItem from="1561273687672" duration="2436000" />
+      <workItem from="1561273687672" duration="2682000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="220689000" />
+    <option name="totallyTimeSpent" value="220935000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -902,17 +900,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/blog/partials/page-footer.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="23" column="88" selection-start-line="23" selection-start-column="88" selection-end-line="23" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config/blog.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="73">
           <caret line="3" column="35" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/blog/partials/page-footer.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="23" column="88" selection-start-line="23" selection-start-column="88" selection-end-line="23" selection-end-column="88" />
         </state>
       </provider>
     </entry>
