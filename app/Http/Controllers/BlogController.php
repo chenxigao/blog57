@@ -12,6 +12,11 @@ use App\Services\SiteMap;
 
 class BlogController extends Controller
 {
+    public function redirect()
+    {
+        return redirect('/blog');
+    }
+
     public function show()
     {
         return redirect('/admin/post');
@@ -22,7 +27,7 @@ class BlogController extends Controller
         $tag = $request->get('tag');
         $postService = new PostService($tag);
         $data = $postService->lists();
-        $layout = $tag ? Tag::layout('tag') : 'blog.layouts.index';
+        $layout = $tag ? Tag::layout($tag) : 'blog.layouts.index';
         return view($layout, $data);
     }
 

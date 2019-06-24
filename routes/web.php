@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', 'BlogController@index')->name('blog.home');
+Route::get('/', 'BlogController@redirect')->name('blog.redirect');
+Route::get('/blog', 'BlogController@index')->name('blog.home');
 
 //后台路由
 Route::get('/admin', 'BlogController@show')->name('show');

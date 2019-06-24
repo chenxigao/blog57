@@ -100,6 +100,7 @@ class Post extends Model {
     }
 
     //返回标记连接的数组
+
     public function tagLinks($base = '/blog?tag=%TAG%')
     {
         $tags = $this->tags()->get()->pluck('tag')->all();

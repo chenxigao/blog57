@@ -18,7 +18,8 @@ class PostService {
     public function lists()
     {
         if ($this->tag) {
-            return $this->tag->tagIndexData($this->tag);
+            return $this->tagIndexData($this->tag);
+
         }
         return $this->normalIndexData();
     }
@@ -47,7 +48,7 @@ class PostService {
     protected function tagIndexData($tag)
     {
         $tag = Tag::where('tag', $tag)->firstOrFail();
-        $reverse_direction = (bool) $tag->reverse_direction;
+        $reverse_direction = (bool)$tag->reverse_direction;
 
         $posts = Post::where('published_at', '<=', Carbon::now())
                 ->whereHas('tags', function ($q) use ($tag) {
@@ -59,7 +60,7 @@ class PostService {
 
         $posts->appends('tag', $tag->tag);
 
-        $page_image = $tag->page_image ? : config('blog.page_image');
+        $page_image = $tag->page_image ?: config('blog.page_image');
 
         return [
                 'title'             => $tag->title,
