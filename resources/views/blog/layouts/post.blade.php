@@ -16,7 +16,6 @@
                             Posted on {{ $post->published_at->format('Y-m-d') }}
                             @if ($post->tags->count())
                                 in
-                            {{ dd($post->tagLinks()) }}
                                 {!! join(', ', $post->tagLinks()) !!}
                             @endif
                         </span>
