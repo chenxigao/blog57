@@ -16,7 +16,7 @@
     "clean-blog": "0.0.1-security",
     "cross-env": "^5.1",
     "datatables.net-bs4": "^1.10.19",
-    "jquery": "^3.2",
+    "jquery": "^3.5",
     "laravel-mix": "^3.0.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
