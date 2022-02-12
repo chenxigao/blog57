@@ -28,7 +28,7 @@
     "vue": "^2.5.17"
   },
   "dependencies": {
-    "ajv": "^6.6.1",
+    "ajv": "^6.12.3",
     "imagemin": "^6.0.0",
     "npm": "^6.4.1",
     "react-helmet": "^5.2.1"
